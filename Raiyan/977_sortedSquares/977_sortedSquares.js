@@ -1,5 +1,6 @@
 // #977. Squares of a Sorted Array
 
+// Method - 1 using Two pointers
 function sortedSquares(nums) {
     const result = [];
     let left = 0;
@@ -22,5 +23,16 @@ function sortedSquares(nums) {
     }
     return result;
 }
+
+// Method - 2 using Array Sort Btw It will be O(n^2)
+const sortedSquares2 = function (nums) {
+    let i = 0;
+
+    while (nums.length !== i) {
+        nums[i] = nums[i] ** 2;
+        i++;
+    }
+    return nums.sort((a, b) => a - b);
+};
 
 console.log(sortedSquares([-4, -1, 0, 3, 10]));
