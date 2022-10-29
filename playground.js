@@ -29,7 +29,7 @@ function findMaxConsecutiveOnes(nums) {
         currentOnes = nums[i] === 0 ? 0 : currentOnes + 1
         maxOnes = currentOnes > maxOnes ? currentOnes : maxOnes
         console.log(i, currentOnes, maxOnes);
-    }
+    } // O(n)
     return maxOnes
 }
 
@@ -77,7 +77,7 @@ function findMaxConsecutiveOnes4(nums) {
     let right = 0;
 
     while(right < nums.length){ 
-        if(nums[right] !== 1){ // 
+        if(nums[right] !== 1){ 
             left = right + 1
         }    
         maxConsecutiveNums = Math.max(maxConsecutiveNums, right - left + 1);
