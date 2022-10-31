@@ -42,32 +42,17 @@ function removeElement(nums, val) {
 
 
 // method 02 - Brute Force
-// source - https://leet-codes.blogspot.com/2022/10/remove-element.html
+// return only the length of the array if the element is removed from it
+// so, this is not the exact solution to the leetcode's no. 27 problem
+// this method is done just to learn a way of thinking
 function removeElement2(nums, val) {
-    let j = 0
+    const j = 0
     for (let n of nums) {
-        if (n !== val) {
-            nums[j++] = n
+        if (nums[i] !== val) {
+            nums[j++] = n;
         }
     }
     return j
 }
 
-
-// method 03
-// concept is same as of method 02
-function removeElement3(nums, val) {
-    if (!nums || nums.length < 1) return 0
-
-    let count = 0
-    for (let i = 0; i < nums.length; i++) {
-        if (i < nums.length && nums[i] === val) {
-            continue
-        }
-        nums[count] = nums[i]
-        count++
-    }
-    return count
-}
-
-console.log(removeElement3([0,1,2,2,3,0,4,2], 2));
+console.log(removeElement2([0,1,2,2,3,0,4,2], 2));
