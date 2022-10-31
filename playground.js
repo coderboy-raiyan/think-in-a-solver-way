@@ -47,10 +47,27 @@ function removeElement2(nums, val) {
     let j = 0
     for (let n of nums) {
         if (n !== val) {
-            nums[j++] = n;
+            nums[j++] = n
         }
     }
     return j
 }
 
-console.log(removeElement2([0,1,2,2,3,0,4,2], 2));
+
+// method 03
+// concept is same as of method 02
+function removeElement3(nums, val) {
+    if (!nums || nums.length < 1) return 0
+
+    let count = 0
+    for (let i = 0; i < nums.length; i++) {
+        if (i < nums.length && nums[i] === val) {
+            continue
+        }
+        nums[count] = nums[i]
+        count++
+    }
+    return count
+}
+
+console.log(removeElement3([0,1,2,2,3,0,4,2], 2));
