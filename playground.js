@@ -29,6 +29,7 @@
 // 0 <= nums[i] <= 50
 // 0 <= val <= 100
 
+// method 01
 function removeElement(nums, val) {
     do {
         const indexOfVal = nums.indexOf(val)
@@ -39,4 +40,17 @@ function removeElement(nums, val) {
     return nums
 }
 
-console.log(removeElement([0,1,2,2,3,0,4,2], 0));
+
+// method 02 - Brute Force
+// source - https://leet-codes.blogspot.com/2022/10/remove-element.html
+function removeElement2(nums, val) {
+    let j = 0
+    for (let n of nums) {
+        if (n !== val) {
+            nums[j++] = n;
+        }
+    }
+    return j
+}
+
+console.log(removeElement2([0,1,2,2,3,0,4,2], 2));

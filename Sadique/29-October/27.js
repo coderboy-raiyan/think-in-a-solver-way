@@ -29,6 +29,7 @@
 // 0 <= nums[i] <= 50
 // 0 <= val <= 100
 
+// method 01
 function removeElement(nums, val) {
     do {
         const indexOfVal = nums.indexOf(val)
@@ -39,4 +40,19 @@ function removeElement(nums, val) {
     return nums
 }
 
-console.log(removeElement([0,1,2,2,3,0,4,2], 0));
+
+// method 02 - Brute Force
+// return only the length of the array if the element is removed from it
+// so, this is not the exact solution to the leetcode's no. 27 problem
+// this method is done just to learn a way of thinking
+function removeElement2(nums, val) {
+    const j = 0
+    for (let n of nums) {
+        if (nums[i] !== val) {
+            nums[j++] = n;
+        }
+    }
+    return j
+}
+
+console.log(removeElement2([0,1,2,2,3,0,4,2], 2));
