@@ -1,1 +1,2 @@
-You will some solutions to some of leetcode's problems with explanation here - https://leet-codes.blogspot.com/
+You will find some solutions to some of leetcode's problems with explanation here - 
+https://leet-codes.blogspot.com/
