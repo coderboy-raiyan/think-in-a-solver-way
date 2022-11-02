@@ -11,10 +11,10 @@ for(let right=0;right<nums.length;right++){
 
 }
 
-return left;
+return nums;
 
 
 }
 
 
-console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+console.log(removeDuplicates([1,1,2,3,3,4]));
