@@ -24,16 +24,14 @@
 
 // Follow up: Can you come up with an algorithm that runs in O(m + n) time?
 
-
-// method 01 - my newbie solution
 var merge = function(nums1, m, nums2, n) {
-    let nums2Pointer = 0
+    let index = 0
     let lastZeroIndex = 0
     for (let i = 0; i < nums1.length; i++) {
         if (nums1[i] === 0) {
             const currentZeroIndex = nums1.indexOf(0, lastZeroIndex)
             lastZeroIndex = currentZeroIndex
-            nums1.splice(currentZeroIndex, 1, nums2[nums2Pointer++])
+            nums1.splice(currentZeroIndex, 1, nums2[index++])
         }
     }
     nums1.sort((a, b) => a - b)
