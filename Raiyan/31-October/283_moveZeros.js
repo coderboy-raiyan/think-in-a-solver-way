@@ -3,6 +3,9 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+
+// Method - 1
+
 function moveZeros(nums) {
     if (nums.length <= 1) {
         return nums;
@@ -17,21 +20,24 @@ function moveZeros(nums) {
     }
     return nums;
 }
+
+// Method - 2
 function moveZeros2(nums) {
     if (nums.length <= 1) {
         return nums;
     }
     let left = 0;
-    let right = nums.length - 1;
-    while (left <= right) {
-        if (nums[left] === 0) {
-            nums[left] = nums[right];
-            nums[right] = nums[left];
-            left++;
-            right--;
+    let right = 0;
+
+    while (left < nums.length) {
+        if (nums[left] !== 0) {
+            [nums[right], nums[left]] = [nums[left], nums[right]];
+            right++;
         }
-        console.log(nums[left], nums[right]);
+
+        left++;
     }
+
     return nums;
 }
 
