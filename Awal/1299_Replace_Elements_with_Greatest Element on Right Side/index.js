@@ -1,16 +1,14 @@
 var replaceElements = function(arr) {
-    let max =0;
+    let currMax =0;
 
     for(let i=arr.length-1; i>=0; i--){
-       let prevMax = max;
-    max = Math.max(max, arr[i])
-       if(max>arr[i]){
-        arr[i] = max;
+       let prevMax = currMax;
+    currMax = Math.max(currMax, arr[i])
+       if(currMax>arr[i]){
+        arr[i] = currMax;
        }else{
-       
         arr[i] = prevMax;
        }
-       console.log(arr[i],"max");
     }
     arr[arr.length-1] = -1;
     return arr;
