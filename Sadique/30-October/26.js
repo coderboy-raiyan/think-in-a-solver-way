@@ -46,6 +46,8 @@
 // -100 <= nums[i] <= 100
 // nums is sorted in non-decreasing order.
 
+
+// method 01
 var removeElement = function(nums, val) {
     do {
         const indexOfVal = nums.indexOf(val);
