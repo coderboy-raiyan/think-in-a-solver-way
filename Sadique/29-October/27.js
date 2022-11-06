@@ -35,7 +35,7 @@ function removeElement(nums, val) {
         const indexOfVal = nums.indexOf(val)
         console.log(indexOfVal)
     if (indexOfVal === -1) break
-    nums.splice(indexOfVal, 1)
+        nums.splice(indexOfVal, 1)
     } while(nums.indexOf(val) >= -1)
     return nums
 }
