@@ -1,30 +1,27 @@
 var thirdMax = function(nums) {
+    let set = new Set();
+      
+      for(let i=0;i<nums.length;i++){
+          
+          if(set.has(nums[i])){
+              continue;
+          }
+          
+          set.add(nums[i])
+      }
+      
+
+      let unique = [...set.values()].sort((a,b)=>b-a);
+      let max=0;
+    if(unique.length>=3){
     
-    let unique = {}
-    for(let i=0;i<nums.length; i++){
-        
-        let check = unique[nums[i]]
-        
-        if(check>=0){
-            continue;
-        }else{
-            unique[nums[i]] =i;
-        }
-        
+     return unique[2]
+    }else if(unique.length<=1){
+        return unique[0];
+    }else{
+        return Math.max(unique[0], unique[1]);
     }
+      
+  }
 
-    let length = Object.keys(unique).length;
-    console.log(unique)
-    if(length===1){
-return Object.keys(unique)[0]
-    }else if(length<3){
-      return Math.max(Object.keys(unique)[0],Object.keys(unique)[1])
-    }
-
-    return Object.keys(unique)[length-3];
-};
-
-
-
-console.log(thirdMax(
-    [1,2,-2147483648]))
+console.log(thirdMax([1,2,2,5,3,5]))
