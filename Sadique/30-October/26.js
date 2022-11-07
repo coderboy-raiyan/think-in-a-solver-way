@@ -46,3 +46,12 @@
 // -100 <= nums[i] <= 100
 // nums is sorted in non-decreasing order.
 
+
+// method 01
+var removeElement = function(nums, val) {
+    do {
+        const indexOfVal = nums.indexOf(val);
+        if (indexOfVal === -1) return;        
+        nums.splice(indexOfVal, 1);
+    } while (nums.indexOf(val) >= 0);
+};
