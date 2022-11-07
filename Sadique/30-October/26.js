@@ -48,10 +48,13 @@
 
 
 // method 01
-var removeElement = function(nums, val) {
-    do {
-        const indexOfVal = nums.indexOf(val);
-        if (indexOfVal === -1) return;        
-        nums.splice(indexOfVal, 1);
-    } while (nums.indexOf(val) >= 0);
+var removeElement = function(nums) {
+    //two pointers, one pass
+var slow = 0;
+for (var fast = 0; fast < nums.length; fast++) {
+    if (nums[slow] !== nums[fast]) {
+        nums[++slow] = nums[fast];
+    }
+}
+return slow+1;
 };

@@ -1,3 +1,28 @@
+// 448. Find All Numbers Disappeared in an Array
+
+// Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
+
+ 
+
+// Example 1:
+
+// Input: nums = [4,3,2,7,8,2,3,1]
+// Output: [5,6]
+// Example 2:
+
+
+// Input: nums = [1,1]
+// Output: [2]
+
+// Constraints:
+
+// n == nums.length
+// 1 <= n <= 105
+// 1 <= nums[i] <= n
+ 
+
+// Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+
 
 // class Node {
 //     constructor(val) {
@@ -118,9 +143,9 @@ var MyLinkedList = function(val) {
     this.length = 1
 };
 
+// [34] -> [56] -> [33] -> [78]
 
 MyLinkedList.prototype.get = function(index) {
-    if (index < 0 || index > this.length) return -1
     let currentNode = this.head
     let counter = 0
     while (counter !== index) {
@@ -145,7 +170,6 @@ MyLinkedList.prototype.addAtTail = function(val) {
 };
 
 MyLinkedList.prototype.addAtIndex = function(index, val) {
-    if (index < 0) return
     const newNode = {val, next: null}
     const prevNode = this.get(index - 1)
     newNode.next = prevNode.next
@@ -169,4 +193,4 @@ var obj = new MyLinkedList(2)
 
 
  console.log(JSON.stringify(obj));
- console.log(obj.get(6));
+ console.log(obj.get(2));

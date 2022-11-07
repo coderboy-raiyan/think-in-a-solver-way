@@ -1,3 +1,5 @@
+// Brute-Force method
+
 var findDisappearedNumbers = function(nums) {
     nums.sort((a,b)=> a-b)
    let last = nums.length;
