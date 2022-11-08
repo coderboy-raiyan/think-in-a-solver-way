@@ -118,9 +118,9 @@ var MyLinkedList = function(val) {
     this.length = 1
 };
 
-// [34] -> [56] -> [33] -> [78]
 
 MyLinkedList.prototype.get = function(index) {
+    if (index < 0 || index > this.length) return -1
     let currentNode = this.head
     let counter = 0
     while (counter !== index) {
@@ -145,6 +145,7 @@ MyLinkedList.prototype.addAtTail = function(val) {
 };
 
 MyLinkedList.prototype.addAtIndex = function(index, val) {
+    if (index < 0) return
     const newNode = {val, next: null}
     const prevNode = this.get(index - 1)
     newNode.next = prevNode.next
@@ -168,4 +169,4 @@ var obj = new MyLinkedList(2)
 
 
  console.log(JSON.stringify(obj));
- console.log(obj.get(2));
+ console.log(obj.get(6));
