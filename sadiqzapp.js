@@ -1,48 +1,76 @@
-// 26. Remove Duplicates from Sorted Array
 
+class Node {
+    constructor(val) {
+        this.val = val
+        this.next = null
+    }
+}
+class LinkedList {
+    constructor(val) {
+        this.head = new Node(val)
+        this.tail = this.head
+        this.length = 1
+    }
 
-// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
+    append(val) {
+        const newNode = new Node(val)
+        this.tail.next = newNode
+        this.tail = newNode
+        this.length++
+    }
 
-// Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
+    prepend(val) {
+        const newNode = new Node(val)
+        newNode.next = this.head
+        this.head = newNode
+        this.length++
+    }
 
-// Return k after placing the final result in the first k slots of nums.
+    insert(index, val) {
+        const newNode = new Node(val)
+        const prevNode = this.traverseToIndex(index - 1)
+        newNode.next = prevNode.next
+        prevNode.next = newNode
+        this.length++
+    }
 
-// Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+    remove(index) {
+        const prevNode = this.traverseToIndex(index - 1)
+        prevNode.next = prevNode.next.next
+        this.length--
+    }
 
-// Custom Judge:
+    traverseToIndex(index) {
+        let counter = 0
+        let currenNode = this.head
+        while (counter !== index) {
+            currenNode = currenNode.next
+            counter++
+        }
+        return currenNode
+    }
 
-// The judge will test your solution with the following code:
+    printList() {
+        const arr = []
+        let cur = this.head
+        while (cur.next !== null) {
+            arr.push(cur.val)
+            cur = cur.next
+        }
+        return arr
+    }
+    
+}
 
-// int[] nums = [...]; // Input array
-// int[] expectedNums = [...]; // The expected answer with correct length
+const a = new LinkedList(3)
+a.append(45)
+a.append(47)
+a.append(555)
+a.insert(2, 1000)
+// a.remove(2)
+console.log(JSON.stringify(a));
+console.log(a.printList());
+// console.log(a.traverseToIndex(2));
 
-// int k = removeDuplicates(nums); // Calls your implementation
-
-// assert k == expectedNums.length;
-// for (int i = 0; i < k; i++) {
-//     assert nums[i] == expectedNums[i];
-// }
-// If all assertions pass, then your solution will be accepted.
-
- 
-
-// Example 1:
-
-// Input: nums = [1,1,2]
-// Output: 2, nums = [1,2,_]
-// Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
-// It does not matter what you leave beyond the returned k (hence they are underscores).
-// Example 2:
-
-// Input: nums = [0,0,1,1,1,2,2,3,3,4]
-// Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
-// Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
-// It does not matter what you leave beyond the returned k (hence they are underscores).
- 
-
-// Constraints:
-
-// 1 <= nums.length <= 3 * 104
-// -100 <= nums[i] <= 100
-// nums is sorted in non-decreasing order.
-
+// [3] [45] [56] [43]
+// head          tail
