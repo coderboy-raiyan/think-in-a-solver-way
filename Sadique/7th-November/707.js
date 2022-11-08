@@ -32,3 +32,37 @@
 // myLinkedList.get(1);              // return 2
 // myLinkedList.deleteAtIndex(1);    // now the linked list is 1->3
 // myLinkedList.get(1);              // return 3   
+
+
+var MyLinkedList = function(val) {
+    this.head = {val, next: null}
+    this.tail = this.head
+    this.length = 0
+};
+
+MyLinkedList.prototype.get = function(index) {
+    
+};
+
+MyLinkedList.prototype.addAtHead = function(val) {
+    
+};
+
+MyLinkedList.prototype.addAtTail = function(val) {
+    
+};
+
+MyLinkedList.prototype.addAtIndex = function(index, val) {
+    
+};
+MyLinkedList.prototype.deleteAtIndex = function(index) {
+    
+};
+
+// Your MyLinkedList object will be instantiated and called as such:
+var obj = new MyLinkedList()
+ var param_1 = obj.get(index)
+ obj.addAtHead(val)
+ obj.addAtTail(val)
+ obj.addAtIndex(index,val)
+ obj.deleteAtIndex(index)
