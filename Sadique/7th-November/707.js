@@ -48,6 +48,17 @@ MyLinkedList.prototype.get = function(index) {
         currentNode = currentNode.next
         counter++
     }
+    return currentNode.val
+};
+
+MyLinkedList.prototype.getNodeAtIndex = function(index) {
+    if (index < 0 || index > this.length) return -1
+    let currentNode = this.head
+    let counter = 0
+    while (counter !== index) {
+        currentNode = currentNode.next
+        counter++
+    }
     return currentNode
 };
 
@@ -78,18 +89,17 @@ MyLinkedList.prototype.addAtTail = function(val) {
 };
 
 MyLinkedList.prototype.addAtIndex = function(index, val) {
-    if (index < 0 || index > this.length) return
+    if (index < 0 || index === this.length) return
     if (index === this.length) {
         this.addAtTail(val)
         this.length++
     }
     const newNode = {val, next: null}
-    const prevNode = this.get(index - 1)
+    const prevNode = this.getNodeAtIndex(index - 1)
     newNode.next = prevNode.next
     prevNode.next = newNode
     this.length++
 };
-
 MyLinkedList.prototype.deleteAtIndex = function(index) {
     if (index < 0 ) return
     if (index > this.length - 1) return
@@ -101,15 +111,16 @@ MyLinkedList.prototype.deleteAtIndex = function(index) {
     }
     if (index !== 0 && this.length > 1) {
         if (index === this.length - 1) {
-            const prevNode = this.get(index - 1)
+            const prevNode = this.getNodeAtIndex(index - 1)
             prevNode.next = null
             this.tail = prevNode
             this.length--
             return
         }
-        const prevNode = this.get(index - 1)
+        const prevNode = this.getNodeAtIndex(index - 1)
         const currentNode = prevNode.next
-        prevNode.next = currentNode.next
+        console.log(currentNode)
+        prevNode.next = currentNode.next 
         this.length--
     }
 };
