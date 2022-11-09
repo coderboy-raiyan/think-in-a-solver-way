@@ -35,34 +35,97 @@
 
 
 var MyLinkedList = function(val) {
-    this.head = {val, next: null}
-    this.tail = this.head
+    this.head = null
     this.length = 0
 };
 
 MyLinkedList.prototype.get = function(index) {
-    
+
+  if (index >= this.length) return -1
+    let currentNode = this.head
+    let counter = 0
+    while (counter !== index) {
+        currentNode = currentNode.next
+        counter++
+    }
+    return currentNode.val
+};
+
+MyLinkedList.prototype.getNodeAtIndex = function(index) {
+    if (index < 0 || index > this.length) return -1;
+    let currentNode = this.head
+    let counter = 0
+    while (counter !== index) {
+        currentNode = currentNode.next
+        counter++
+    }
+    return currentNode
 };
 
 MyLinkedList.prototype.addAtHead = function(val) {
-    
+    const newNode = {val, next: null}
+ 
+    newNode.next = this.head
+    this.head = newNode
+    this.length++
 };
 
 MyLinkedList.prototype.addAtTail = function(val) {
+    const newNode = {val, next: null}
+
+    if (this.length === 0) {
+    return  this.addAtHead(val);
+    }
+
+   let curr = this.head;
+    while(curr.next !== null){
+        curr = curr.next;
+    }
+
+    curr.next = newNode
     
+    this.length++
 };
 
-MyLinkedList.prototype.addAtIndex = function(index, val) {
-    
+MyLinkedList.prototype.addAtIndex = function( index, val) {
+    if (index>this.length) return
+    if (index == 0) {
+       return this.addAtHead(val)
+    }
+    if (index === this.length) {
+       return this.addAtTail(val)
+    }
+    const newNode = {val, next: null}
+    const prevNode = this.getNodeAtIndex(index - 1)
+    const holdingPointer = prevNode.next;
+    prevNode.next = newNode
+    newNode.next = holdingPointer;
+    this.length++
+
+    return;
 };
 MyLinkedList.prototype.deleteAtIndex = function(index) {
+   if (index >= this.length ) return
+
+    if (index === 0) {
+        this.head = this.head.next
+        this.length --;
+        return
+    }
     
+        const prevNode = this.getNodeAtIndex(index - 1)
+        const currentNode = prevNode.next
+        console.log(currentNode)
+        prevNode.next = currentNode.next 
+        this.length--;
 };
 
 // Your MyLinkedList object will be instantiated and called as such:
 var obj = new MyLinkedList()
- var param_1 = obj.get(index)
- obj.addAtHead(val)
- obj.addAtTail(val)
- obj.addAtIndex(index,val)
- obj.deleteAtIndex(index)
+obj.addAtHead(1)
+obj.addAtTail(3)
+obj.addAtIndex(1, 2)
+console.log(obj.get(1));
+obj.deleteAtIndex(1)
+console.log(obj.get(1));
+ console.log(JSON.stringify(obj));

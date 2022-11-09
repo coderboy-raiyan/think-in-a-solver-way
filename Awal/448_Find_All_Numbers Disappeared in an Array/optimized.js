@@ -1,4 +1,4 @@
-// Brute-Force method
+// Code optimized
 
 var findDisappearedNumbers = function(nums) {
   
