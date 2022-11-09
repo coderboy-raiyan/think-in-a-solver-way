@@ -40,6 +40,7 @@ var MyLinkedList = function(val) {
 };
 
 MyLinkedList.prototype.get = function(index) {
+
   if (index >= this.length) return -1
     let currentNode = this.head
     let counter = 0
@@ -51,7 +52,7 @@ MyLinkedList.prototype.get = function(index) {
 };
 
 MyLinkedList.prototype.getNodeAtIndex = function(index) {
-    if (index < 0 || index > this.length) return -1
+    if (index < 0 || index > this.length) return -1;
     let currentNode = this.head
     let counter = 0
     while (counter !== index) {
