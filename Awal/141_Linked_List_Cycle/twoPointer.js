@@ -4,7 +4,8 @@
 
 var hasCycle = function(head) { 
 
-    let fast, slow = this.head, this.head;
+    let fast = head;
+    let slow = head;
 
     while(fast && slow){
         fast = fast.next.next;
