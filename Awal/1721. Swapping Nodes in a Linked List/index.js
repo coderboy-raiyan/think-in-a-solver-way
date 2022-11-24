@@ -6,7 +6,7 @@ class Node{
 }
 
 
-let head; 
+let head=null; 
 
 
 function swapNodes (x,y){
@@ -34,29 +34,32 @@ function swapNodes (x,y){
     if(!currX && !currY){
         return;
     }
-
+console.log(currX.val,"chec", currY.val);
+   
 // if prevX is not null, then the linked list
-    if(prevX){
-        prevX.next = currY
-    }else{
-        head = currY;
-    }
+if (prevX != null)
+prevX.next = currY;
+else{
+    console.log("Ini");
+    head = currY;
+}
 
-    // if prevY is not null, then the linked list
-    if(prevY){
-        prevY.next = currX
-    }else{
-        head = currX;
-    }
+// If y is not head of linked list
+if (prevY != null)
+prevY.next = currX;
+else {
+console.log("Ini");
+    head = currX;
+}
 
-
+    console.log(currX,"chec", currY);
     let temp = currX.next;
 
     currX.next = currY.next;
     currY.next = temp; 
 
 
-    console.log(head);
+    console.log(head,"oho");
 }
 
 /**
@@ -74,6 +77,7 @@ function push(data){
 
 let arr = [];
 function printList() {
+    console.log(head);
     var tNode = head;
     // console.log(head);
      while (tNode != null) {
@@ -84,12 +88,12 @@ function printList() {
      return arr;
  }
 
-push(7);
-push(6);
-push(5);
-push(4);
+// push(7);
+// push(6);
+// push(5);
+// push(4);
 push(3);
 push(2);
 push(1);
-swapNodes(5,6)
-console.log("hello", printList());
+swapNodes(3,1)
+console.log(printList());
