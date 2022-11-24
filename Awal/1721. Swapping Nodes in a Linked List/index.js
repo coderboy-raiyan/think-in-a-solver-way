@@ -34,13 +34,11 @@ function swapNodes (x,y){
     if(!currX && !currY){
         return;
     }
-console.log(currX.val,"chec", currY.val);
    
 // if prevX is not null, then the linked list
 if (prevX != null)
 prevX.next = currY;
 else{
-    console.log("Ini");
     head = currY;
 }
 
@@ -48,18 +46,15 @@ else{
 if (prevY != null)
 prevY.next = currX;
 else {
-console.log("Ini");
     head = currX;
 }
-
-    console.log(currX,"chec", currY);
-    let temp = currX.next;
+let temp = currX.next;
+console.log(head,"temp", currX.val,"ov", currY.next.val,"ag", temp.val);
 
     currX.next = currY.next;
     currY.next = temp; 
 
 
-    console.log(head,"oho");
 }
 
 /**
@@ -77,7 +72,7 @@ function push(data){
 
 let arr = [];
 function printList() {
-    console.log(head);
+
     var tNode = head;
     // console.log(head);
      while (tNode != null) {
@@ -95,5 +90,5 @@ function printList() {
 push(3);
 push(2);
 push(1);
-swapNodes(3,1)
+swapNodes(2,1)
 console.log(printList());
