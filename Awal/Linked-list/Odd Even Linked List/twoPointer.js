@@ -24,3 +24,27 @@ var oddEvenList = function(head) {
         return head;
         
     };
+
+
+      
+    let curr = head;
+    let counter = 0;
+    // while()
+
+        while(head != null && head.val == val){
+            head = head.next;
+        }
+            if(head == null){
+           return head;
+       }
+    
+    while(curr){
+        if(curr.next && curr.next.val == val){
+            curr.next = curr.next? curr.next.next: null;
+            continue;
+        }
+        
+        curr = curr.next;
+    }
+    
+    return head;
