@@ -14,8 +14,8 @@ function oddEven (x,y){
         let odd = head;
         let even = head.next;
         let evenStart = even;
- 
-    while(odd.next && even.next){
+        let oddStart = odd;
+    while(even && even.next){
       
         odd.next = even.next;
         odd = odd.next;
@@ -24,10 +24,12 @@ function oddEven (x,y){
         even = even.next;
     }
 
+    console.log(even,"eve");
     odd.next = evenStart;
-    if(odd.next !== null){
-        even.next = null;
-    }
+    // even.next = odd;
+    // if(odd.next !== null){
+    //     even.next = null;
+    // }
 
   
 }
