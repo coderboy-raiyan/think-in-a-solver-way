@@ -18,4 +18,3 @@ var isPalindrome = function(head) {
     }
     return true;
 };
-
