@@ -1,97 +1,32 @@
-// swapping two node in linked list
+//  Merge two sorted Array
 
-
-
-class Node{
-  constructor(val){
-    this.val = val;
-    this.next = null
+let merge = function(l1, m, l2, n){
+  let last = m+n-1;
+  let first = m-1;
+  let second = n-1;
+  while(first>=0 && second>=0){
+    if(l1[first]>l2[second]){
+      // console.log(l1[first],l2[second]);
+      l1[last] = l1[first];
+      first--;
+    }else{
+        //  console.log(l1[first],l2[second]);
+      l1[last] = l2[second]
+      second--;
+    }
+    last--;
   }
-}
 
+  console.log(l2[second],second,"lado");
 
-let head=null;
-
-
-function swapNodes(x,y){
-// Nothing to do if x and y are same
-if (x == y)
-return;
-
-// Search for x (keep track of prevX and CurrX)
-var prevX = null, currX = head;
-while (currX != null && currX.val != x) {
-prevX = currX;
-currX = currX.next;
-}
-
-
-// Search for y (keep track of prevY and currY)
-var prevY = null, currY = head;
-while (currY != null && currY.val != y) {
-prevY = currY;
-currY = currY.next;
-}
-
-console.log(prevX,"prev",prevY);
-
-
-// If either x or y is not present, nothing to do
-if (currX == null || currY == null)
-return;
-
-// If x is not head of linked list
-if (prevX != null)
-prevX.next = currY;
-else // make y the new head
-head = currY;
-
-// If y is not head of linked list
-if (prevY != null)
-prevY.next = currX;
-else // make x the new head
-head = currX;
-
-// Swap next pointers
-var temp = currX.next;
-currX.next = currY.next;
-currY.next = temp;
-
-
-}
-
-
-
-
-function push(new_data) {
-  /* 1. alloc the Node and put the data */
-var new_Node = new Node(new_data);
-
-  /* 2. Make next of new Node as head */
-  new_Node.next = head;
-
-  /* 3. Move the head to point to new Node */
-  head = new_Node;
-}
-
-
-
-function printList(){
-  let curr = head;
-  let arr = [];
-  while(curr){
-    arr.push(curr.val);
-    curr = curr.next;
+  while(second>0){
+    l1[last] = l2[second]
+    last--;
+    second--;
   }
-  return arr;
+
+  return l1;
+
 }
 
-
-
-push(9)
-push(4)
-push(3)
-push(2)
-push(1)
-swapNodes(1,9)
-console.log(printList());
+console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));

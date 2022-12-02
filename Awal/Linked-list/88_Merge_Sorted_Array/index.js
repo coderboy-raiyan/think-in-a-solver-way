@@ -11,12 +11,13 @@ const merge = function (l1, m, l2, n) {
         }
         last--;
     }
-
     while (n > 0) {
         l1[last] = l2[n - 1];
         last--;
         n--;
     }
+
+    return l1
 };
 
 console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
