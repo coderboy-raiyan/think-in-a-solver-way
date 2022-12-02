@@ -56,6 +56,45 @@ const printListMulti = head => {
     printListMulti(head.next);
   }
 
-let multiLinkedList = buildMultiLevel(nodes);
 
-console.log((multiLinkedList))
+  const printList = head => {
+    if(!head) {
+      return;
+    }
+  
+    console.log(head.val);
+    
+    printList(head.next);
+  }
+  let flatten = function(head){
+    if(!head) return null;
+    let curr = head;
+
+    while(curr){
+
+        if(curr.child === null){
+            curr = curr.next;
+            continue;
+        }
+
+        let child = curr.child;
+
+        while(child.next){
+            child  = child.next;
+        }
+
+        child.next = curr.next;
+        if(!curr.next) curr.next.prev = child;
+
+        curr.next = curr.child;
+        curr.next.prev = curr;
+        curr.child = null;
+    }
+    return head;
+  }
+
+
+let multiLinkedList = buildMultiLevel(nodes);
+printListMulti(multiLinkedList);
+console.log('after flatten');
+printList(flatten(multiLinkedList));
