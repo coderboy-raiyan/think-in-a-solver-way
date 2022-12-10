@@ -132,7 +132,5 @@ class Node {
     }
   }
   
-  // Do not edit the lines below.
-  exports.Node = Node;
-  exports.DoublyLinkedList = DoublyLinkedList;
+
   
