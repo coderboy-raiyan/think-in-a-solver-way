@@ -3,17 +3,12 @@
  */
 
 
-
 class Node{
     constructor(val){
         this.val = val;
         this.next = null;
     }
 }
-
-
-
-let head; 
 
 
 
@@ -27,7 +22,7 @@ function swapNodes(k){
     }
 
     let firstNode = k;
-    let lastNode = length - k+1;
+    let lastNode = length - k+1;    
 
     console.log(lastNode,"length");
     let prevX = null, currX = head, counterX=1;
@@ -35,7 +30,6 @@ function swapNodes(k){
         prevX = currX;
         currX = currX.next;
         counterX++;
-  
     }
 
 
@@ -77,7 +71,6 @@ function swapNodes(k){
 
 
 function push(data){
-
     let newNode = new Node(data);
 
     newNode.next = head;
