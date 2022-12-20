@@ -1,0 +1,10 @@
+Design Related Problems
+1. LRU Cache
+2. Implement Queue using Stacks
+3. Design Circular Deque
+4. Design Circular Queue
+5. Time Based Key-Value Store
+6. Design Movie Rental System
+7. Operations on Tree
+8. Stock Price Fluctuation
+9. Design a Text Editor

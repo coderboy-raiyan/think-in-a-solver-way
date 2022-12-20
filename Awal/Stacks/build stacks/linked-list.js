@@ -1,68 +1,58 @@
-class Node{
+class Node {
     constructor(val){
-        this.top = val;
-        this.next = null;
+        this.val = val;
+        this.next = null
     }
 }
 
-
-class Stack {
-    constructor(){
-        this.top = null;
-        this.bottom = null;
-        this.length = 0;
-    }
-
-
-    peek(){
-        return this.top;
-    }
-
-    pop(){
-
-        if(!this.top){
-            return null;
-        }
-
-
-        if(this.top === this.bottom){
-            this.bottom = null;
-        }
-
-        let nextPointer = this.top.next;
-        this.top = nextPointer;
-
-        this.length--;
-        return this;
-
-    }
-
-    push(val){
-        
-        const newNode = new Node(val)
-        if(this.length>0){
-            /** You can do this way  */
-        //     let holdingPointer = this.top;
-        //     this.top = newNode;
-        //  this.top.next =   holdingPointer;
-        
-        /** Or you can do this way */
-        newNode.next = this.top;
-        this.top = newNode;
-        }else{
-            this.top = newNode
-            this.bottom = newNode
-        }
-
-        this.length++;
-    }
+const myStack = function(){
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
 }
 
 
-const myStack = new Stack();
+myStack.prototype.peek = function(){
+    return this.head;
 
-myStack.push(2)
-myStack.push(4)
-myStack.push(7)
-myStack.peek();
-console.log(myStack.peek());
+}
+myStack.prototype.pop = function(){
+    if(this.head === null){
+        return;
+    }
+    if(this.head === this.tail){
+        console.log("dom");
+        this.tail = null;
+    }
+
+      let nextPointer = this.head.next;
+      console.log(nextPointer,"clod");
+        this.head = nextPointer;
+    this.size--;
+    return this;
+
+}
+
+myStack.prototype.push = function(val){
+    let newNode = new Node(val)
+    if(this.head === null){
+        this.head = newNode;
+        this.tail = newNode;
+        return;
+    }
+
+    newNode.next = this.head;
+    this.head = newNode;
+
+    this.size++;
+    return;
+}
+
+
+let obj = new myStack();
+obj.push(5);
+obj.push(3);
+obj.pop()
+obj.pop()
+
+console.log(obj);
