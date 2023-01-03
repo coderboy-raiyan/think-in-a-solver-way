@@ -1,99 +1,42 @@
+// 283. Move Zeroes
+
+// Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+// Note that you must do this in-place without making a copy of the array.
+
+ 
+
+// Example 1:
+
+// Input: nums = [0,1,0,3,12]
+// Output: [1,3,12,0,0]
+// Example 2:
+
+// Input: nums = [0]
+// Output: [0]
+ 
+
+// Constraints:
+
+// 1 <= nums.length <= 104
+// -231 <= nums[i] <= 231 - 1
 
 
-class Node{
-  constructor(val){
-    this.val = val;
-    this.prev = null;
-    this.next = null;
-  }
-}
+var moverZeroes = function(s) {
 
+let left=0;
+let right =0;
 
-
-let MyLinedList = function(){
-  this.head = null;
-  this.size = 0;
-}
-
-MyLinedList.prototype.addAtHead = function(val){
-  let newNode = new Node(val)
-
-  newNode.next = this.head;
-
-  if(this.head !== null){
-     this.head.prev = newNode;
-  }
-
-  this.head = newNode;
-  this.size++;
-}
-
-MyLinkedList.prototype.addAtTail = function(val){
-  if(this.size == 0){
-    return this.addAtHead(val)
-  }
-
-  let newNode = new Node(val);
-
-  let curr = this.head;
-    while(curr && curr.next){
-      curr = curr.next;
+  while(left < s.length){
+    if(s[left] !== 0){
+      [s[left], s[right]] === [s[right], s[left]];
+      right++;
     }
-    curr.next = newNode;
-    newNode.prev= curr;
 
-    this.size++;
-}
-
-MyLinkedList.prototype.addAtIndex = function(index, val){
-  if(index == 0){
-    return this.addAtHead(val)
+    left++;
   }
-  if(index === this.size){
-    return this.addAtTail(val);
-  }
-  if(index > this.size || index < 0){
-    return;
-  }
-  let newNode = new Node(val);
-  let leader = this.findIndex(index -1);
-  let follower = leader.next;
-  leader.next = newNode;
-  newNode.prev = leader;
-  follower.prev = newNode;
-  newNode.next = follower;
-
-  this.size++;
-  return;
-}
-
-MyLinkedList.prototype.deleteAtIndex = function(index){
-  if(index == this.size){
-    this.head = this.head.next;
-    this.size--;
-    return;
-  }
-  
-  let leader = this.findIndex(index -1);
-  let unwanted = leader.next;
-  leader.next = unwanted.next;
-  unwanted.next.prev = leader;
-
-  this.size--;
 }
 
 
-MyLinkedList.prototype.findIndex = function(index){
-  if(index < 0 || index > this.size){
-    return -1;
-  }
 
-  let counter = 0;
-  let curr = this.head;
-
-  while(index !== counter){
-    curr = curr.next;
-  }
-
-  return curr;
-}
+console.log(moverZeroes([0,1,0,3,12]));
