@@ -23,20 +23,23 @@
 
 
 var moverZeroes = function(s) {
-
-let left=0;
+let left=0; 
 let right =0;
 
-  while(left < s.length){
-    if(s[left] !== 0){
-      [s[left], s[right]] === [s[right], s[left]];
-      right++;
-    }
-
+while(right < s.length){
+  if(s[right] !== 0){
+    [s[right], s[left]] = [s[left], s[right]];
     left++;
   }
+
+  right++;
 }
 
+return s;
+
+}
+
+// console.log(moverZeroes());
 
 
 console.log(moverZeroes([0,1,0,3,12]));
