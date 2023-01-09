@@ -3,25 +3,19 @@
  * Find the longest substring
  */
 
+var isPalindrome = function(x) {
 
+  let con = x.toString().split("");
+  console.log(con);
 
-var lengthOfLongestSubstring = function(s) {
-
-  let j=0, max =0;
-  let map = new Map();
-  for(let i=0; i<s.length; i++){
-
-    while(map.get(s[i])){
-      map.delete(s[j])
-      j++;
-    }
-    map.set(s[i], true);
-    max = Math.max(max, i-j+1);
+  let newArr = [];
+  for(let i = con.length-1; i>=0; i--){
+    newArr.push(con[i]);
   }
 
-  return max;
-
+  // console.log(newArr.join(""));
+  return newArr.join("") == x.toString();
 }
 
 
-console.log(lengthOfLongestSubstring("abcabcbb"));
+console.log(isPalindrome(121));
