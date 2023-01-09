@@ -1,45 +1,27 @@
-// 283. Move Zeroes
 
-// Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
-
-// Note that you must do this in-place without making a copy of the array.
-
- 
-
-// Example 1:
-
-// Input: nums = [0,1,0,3,12]
-// Output: [1,3,12,0,0]
-// Example 2:
-
-// Input: nums = [0]
-// Output: [0]
- 
-
-// Constraints:
-
-// 1 <= nums.length <= 104
-// -231 <= nums[i] <= 231 - 1
+/** 
+ * Find the longest substring
+ */
 
 
-var moverZeroes = function(s) {
-let left=0; 
-let right =0;
 
-while(right < s.length){
-  if(s[right] !== 0){
-    [s[right], s[left]] = [s[left], s[right]];
-    left++;
+var lengthOfLongestSubstring = function(s) {
+
+  let j=0, max =0;
+  let map = new Map();
+  for(let i=0; i<s.length; i++){
+
+    if(map.get(s[i])){
+      map.delete(s[j])
+      j++;
+    }
+    map.set(s[i], true);
+    max = Math.max(max, i-j+1);
   }
 
-  right++;
-}
-
-return s;
+  return max;
 
 }
 
-// console.log(moverZeroes());
 
-
-console.log(moverZeroes([0,1,0,3,12]));
+console.log(lengthOfLongestSubstring("abcabcbb"));
