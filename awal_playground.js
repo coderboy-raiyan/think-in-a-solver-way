@@ -11,7 +11,7 @@ var lengthOfLongestSubstring = function(s) {
   let map = new Map();
   for(let i=0; i<s.length; i++){
 
-    if(map.get(s[i])){
+    while(map.get(s[i])){
       map.delete(s[j])
       j++;
     }
